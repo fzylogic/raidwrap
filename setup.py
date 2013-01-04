@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
   name="raidwrap",
-  version="0.1",
+  version="0.2",
   description="wrapper utility for all those confusing RAID configurator apps",
   author="Jeremy Hanmer",
   author_email="jeremy@dreamhost.com",
