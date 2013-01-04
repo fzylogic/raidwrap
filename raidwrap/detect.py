@@ -6,13 +6,11 @@ from raidwrap.drivers import fallback
 
 basedir = "/sys/bus/pci/devices"
 
-supported_drivers = ('pci:megaraid_sas',
-        'pci:3w-9xxx')
-
-backend_drivers = {'pci:megaraid_sas': megacli.Driver,
+#disabled the fallback driver for now
+backend_drivers = {'pci:megaraid_sas': megacli.Driver(),
         'pci:3w-9xxx': tw_cli.Driver(),
         'pci:arcmsr': cli64.Driver(),
-        'pci:ahci': fallback.Driver()
+        'xxxpci:ahci': fallback.Driver()
         }
 
 
