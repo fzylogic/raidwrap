@@ -32,8 +32,22 @@ def main():
             action='append',
             dest='controllers'
             )
+    parser.add_argument('--prereq',
+            action='store_true',
+            dest='prereq',
+            help='show which backend plugins have their necessary\
+            prerequisites installed'
+            )
     args = parser.parse_args()
     controllers = args.controllers
+    if (args.prereq):
+        for Driver in detect.AllDrivers():
+            if Driver.have_prereq():
+                print Driver.name + " READY"
+            else:
+                print Driver.name + " MISSING DEPENDENCY"
+        return
+
     if (controllers):
         print controllers
     Driver = detect.Driver()

@@ -26,6 +26,13 @@ def Driver():
         return backend_drivers[device.driver]
 
 
+def AllDrivers():
+    drivers = []
+    for driver in backend_drivers.values():
+        drivers.append(driver)
+    return drivers
+
+
 def find_supported_devices():
     devs = os.listdir(basedir)
     supported_devices = []
