@@ -14,3 +14,18 @@ class Driver():
 
     def get_log(self):
         return "NOT IMPLEMENTED"
+
+    def find_bad_disks(self):
+        return "NOT IMPLEMENTED"
+
+    def find_and_tag_bad_disks(self):
+        return "NOT IMPLEMENTED"
+
+    def health(self):
+        return "NOT IMPLEMENTED"
+
+    def bbu_status(self):
+        return "NOT IMPLEMENTED"
+
+    def have_prereq(self):
+        return "NOT IMPLEMENTED"
