@@ -15,10 +15,13 @@ class Driver():
     def get_log(self):
         return "NOT IMPLEMENTED"
 
-    def find_bad_disks(self):
+    def find_disks(self, wanted_statuses, except_statuses):
         return "NOT IMPLEMENTED"
 
-    def find_and_tag_bad_disks(self):
+    def identify_failed_disks(self):
+        return "NOT IMPLEMENTED"
+
+    def identify_cleared(self):
         return "NOT IMPLEMENTED"
 
     def health(self):
