@@ -52,5 +52,5 @@ class Driver(base.Driver):
     def identify_failed_disks(self):
         return "NOT IMPLEMENTED"
 
-    def identify_cleared(self):
+    def identify_clear(self):
         return "NOT IMPLEMENTED"

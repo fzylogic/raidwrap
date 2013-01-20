@@ -55,7 +55,7 @@ class Driver(base.Driver):
                 subprocess.call(["megacli", "-pdlocate", "-start",
                     "-physdrv[" + d + "]", "-aall"])
 
-    def identify_cleared(self):
+    def identify_clear(self):
         disks = self._find_disks()
         for d in disks:
             subprocess.call(["megacli", "-pdlocate", "-stop",
