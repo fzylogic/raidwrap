@@ -47,7 +47,7 @@ class Driver(base.Driver):
 
     def identify_failed_disks(self):
         #pdlocate
-        failed_disks = self._find_disks('failed')
+        failed_disks = self._find_disks(['failed'])
         if not failed_disks:
             print "No failed disks found to identify"
         else:
@@ -60,3 +60,17 @@ class Driver(base.Driver):
         for d in disks:
             subprocess.call(["megacli", "-pdlocate", "-stop",
                 "-physdrv[" + d + "]", "-aall"])
+
+    def have_prereq(self):
+        null = open("/dev/null", "w")
+        print null
+        try:
+            ret = subprocess.call(["megacli", "-h"],
+            stdin=null,
+            stdout=null)
+        except:
+            return False
+        if ret == 0:
+            return True
+        else:
+            return False

@@ -50,7 +50,23 @@ class Driver(base.Driver):
         return disks
 
     def identify_failed_disks(self):
-        return "NOT IMPLEMENTED"
+        disks = self._find_disks('', ['OK'])
+        for d in disks:
+            subprocess.call(['cli64', 'identify', 'drv' + d])
 
     def identify_clear(self):
-        return "NOT IMPLEMENTED"
+        subprocess.call(['cli64', 'identify', 'drv=0'])
+
+    def have_prereq(self):
+        null = open("/dev/null", "w")
+        print null
+        try:
+            ret = subprocess.call(["cli64", "help"],
+                stdin=null,
+                stdout=null)
+        except:
+            return False
+        if ret == 0:
+            return True
+        else:
+            return False
