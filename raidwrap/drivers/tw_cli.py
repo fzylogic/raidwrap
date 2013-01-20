@@ -24,23 +24,22 @@ class Driver(base.Driver):
     def get_log(self):
         subprocess.call(["tw_cli", "/c0", "show", "alarms"])
 
-    def find_disks(self, wanted_statuses, except_statuses):
+    def _find_disks(self, wanted_statuses, except_statuses):
         output = subprocess.check_output(["tw_cli", "/c0", "show"])
         disks = []
-        for line in output.splitlines:
-            for line in output.splitlines():
-                m = re.match("p(\d+)\s+(\S+)", line)
-                if m:
-                    device = m.group(1)
-                    status = m.group(2)
-                    print device + ' is ' + status
-                    if (status not in except_statuses and
-                        (status in wanted_statuses or not wanted_statuses)):
-                        disks.append(device)
+        for line in output.splitlines():
+            m = re.match("p(\d+)\s+(\S+)", line)
+            if m:
+                device = m.group(1)
+                status = m.group(2)
+                print device + ' is ' + status
+                if (status not in except_statuses and
+                    (status in wanted_statuses or not wanted_statuses)):
+                    disks.append(device)
         return disks
 
     def identify_failed_disks(self):
-        failed_disks = self.find_disks("", ["OK", "NOT-PRESENT"])
+        failed_disks = self._find_disks("", ["OK", "NOT-PRESENT"])
         if not failed_disks:
             print "No failed disks found to identify"
         else:
@@ -48,7 +47,7 @@ class Driver(base.Driver):
                 subprocess.call(["tw_cli", "/c0/p" + d, "set identify=on"])
 
     def identify_clear(self):
-        disks = self.find_disks()
+        disks = self._find_disks()
         for d in disks:
             subprocess.call(["tw_cli", "/c0/p" + d, "set identify=off"])
 

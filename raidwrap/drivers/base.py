@@ -15,9 +15,6 @@ class Driver():
     def get_log(self):
         return "NOT IMPLEMENTED"
 
-    def find_disks(self, wanted_statuses, except_statuses):
-        return "NOT IMPLEMENTED"
-
     def identify_failed_disks(self):
         return "NOT IMPLEMENTED"
 
