@@ -41,7 +41,7 @@ class Driver(base.Driver):
                 if (failed == 1):
                     status = "failed"
                 if (status not in except_statuses and
-                       (status in wanted_statuses or not wanted_statuses)):
+                   (status in wanted_statuses or not wanted_statuses)):
                     disks.append(disk)
         return disks
 
@@ -53,21 +53,21 @@ class Driver(base.Driver):
         else:
             for d in failed_disks:
                 subprocess.call(["megacli", "-pdlocate", "-start",
-                    "-physdrv[" + d + "]", "-aall"])
+                                 "-physdrv[" + d + "]", "-aall"])
 
     def identify_clear(self):
         disks = self._find_disks()
         for d in disks:
             subprocess.call(["megacli", "-pdlocate", "-stop",
-                "-physdrv[" + d + "]", "-aall"])
+                             "-physdrv[" + d + "]", "-aall"])
 
     def have_prereq(self):
         null = open("/dev/null", "w")
         print null
         try:
             ret = subprocess.call(["megacli", "-h"],
-            stdin=null,
-            stdout=null)
+                                  stdin=null,
+                                  stdout=null)
         except:
             return False
         if ret == 0:

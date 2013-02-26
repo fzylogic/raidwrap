@@ -5,39 +5,39 @@ from raidwrap import detect
 def main():
     parser = argparse.ArgumentParser('RAIDwrap')
     parser.add_argument('--controllerlist',
-            '--ctllist',
-            action='store_true',
-            dest='ctllist'
-            )
+                        '--ctllist',
+                        action='store_true',
+                        dest='ctllist'
+                        )
     parser.add_argument('--controllerinfo',
-            '--ctlinfo',
-            action='append',
-            dest='ctlinfo'
-            )
+                        '--ctlinfo',
+                        action='append',
+                        dest='ctlinfo'
+                        )
     parser.add_argument('--disklist',
-            '--dlist',
-            action='store_true',
-            dest='disklist'
-            )
+                        '--dlist',
+                        action='store_true',
+                        dest='disklist'
+                        )
     parser.add_argument('--diskinfo',
-            '--dinfo',
-            action='append',
-            dest='diskinfo'
-            )
+                        '--dinfo',
+                        action='append',
+                        dest='diskinfo'
+                        )
     parser.add_argument('--log',
-            action='store_true',
-            dest='log'
-            )
+                        action='store_true',
+                        dest='log'
+                        )
     parser.add_argument('--controller',
-            action='append',
-            dest='controllers'
-            )
+                        action='append',
+                        dest='controllers'
+                        )
     parser.add_argument('--prereq',
-            action='store_true',
-            dest='prereq',
-            help='show which backend plugins have their necessary\
-            prerequisites installed'
-            )
+                        action='store_true',
+                        dest='prereq',
+                        help='show which backend plugins have their necessary\
+                        prerequisites installed'
+                        )
     args = parser.parse_args()
     controllers = args.controllers
     if (args.prereq):

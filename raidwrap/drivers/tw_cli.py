@@ -34,7 +34,8 @@ class Driver(base.Driver):
                 status = m.group(2)
                 print device + ' is ' + status
                 if (status not in except_statuses and
-                    (status in wanted_statuses or not wanted_statuses)):
+                    (status in wanted_statuses
+                        or not wanted_statuses)):
                     disks.append(device)
         return disks
 
@@ -56,8 +57,8 @@ class Driver(base.Driver):
         print null
         try:
             ret = subprocess.call(["tw_cli", "help"],
-                stdin=null,
-                stdout=null)
+                                  stdin=null,
+                                  stdout=null)
         except:
             return False
         if ret == 0:
